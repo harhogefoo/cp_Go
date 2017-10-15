@@ -8,6 +8,22 @@ import (
 	"strings"
 )
 
+func main() {
+	_ = intStdin()
+	k := intStdin()
+	x := splitIntStdin(" ")
+
+	var distance int
+	for _, p := range x {
+		if p < k - p {
+			distance += p * 2
+		} else {
+			distance += (k - p) * 2
+		}
+	}
+	fmt.Println(distance)
+}
+
 /* template */
 var sc = bufio.NewScanner(os.Stdin)
 
@@ -64,17 +80,4 @@ func splitIntStdin(delimiter string) (intAry []int) {
 	}
 	return
 }
-
 /* template */
-
-func main() {
-	n := intStdin()
-	k := intStdin()
-	x := splitIntStdin(" ")
-
-	fmt.Println(n, k)
-
-	for i, p := range x {
-		fmt.Println(i, p)
-	}
-}
