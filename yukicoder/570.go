@@ -59,9 +59,9 @@ func (l List) Swap(i, j int) {
 func (l List) Less(i, j int) bool {
   // 値が等しい場合はキーで昇順にソート
   if l[i].value == l[j].value {
-    return (l[i].name < l[j].name)
+    return l[i].name < l[j].name
   } else {
-    return (l[i].value > l[j].value)
+    return l[i].value > l[j].value
   }
 }
 

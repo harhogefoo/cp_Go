@@ -85,12 +85,12 @@ func (l List) Swap(i, j int) {
   l[i], l[j] = l[j], l[i]
 }
 
-func (l List) Less(im j int) bool {
+func (l List) Less(i, j int) bool {
   // 値が等しい場合はキーで昇順にソート
   if l[i].value == l[j].value {
-    return (l[i].name < l[j].name)
+    return l[i].name < l[j].name
   } else {
-    return (l[i].value < [j].value)
+    return l[i].value < l[j].value
   }
 }
 
