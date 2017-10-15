@@ -2,12 +2,13 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 	"strings"
-	"fmt"
 )
 
+/* template */
 var sc = bufio.NewScanner(os.Stdin)
 
 // 文字列を1行取得
@@ -19,9 +20,10 @@ func strStdin() (stringInput string) {
 }
 
 // 整数値1つ取得
-func intStdin() (int, error) {
+func intStdin() (num int) {
 	stringInput := strStdin()
-	return strconv.Atoi(strings.TrimSpace(stringInput))
+	num, _ = strconv.Atoi(strings.TrimSpace(stringInput))
+	return
 }
 
 // 空白や空文字だけの値を除去したSplit()
@@ -63,40 +65,16 @@ func splitIntStdin(delimiter string) (intAry []int) {
 	return
 }
 
+/* template */
 
 func main() {
-	action := [][]int{{0, -1}, {0, 1}, {-1, 0}, {1, 0}, {-1, -1}, {1, -1}, {-1, 1}, {1, 1}}
-	num := splitIntStdin(" ")
-	h := num[0]
+	n := intStdin()
+	k := intStdin()
+	x := splitIntStdin(" ")
 
-	matrix := make([][]string, h)
-	for i := 0; i < h; i++ {
-		matrix[i] = splitStrStdin("")
-	}
+	fmt.Println(n, k)
 
-	for i := 0; i < h; i++ {
-		for j := 0; j < len(matrix[i]); j++ {
-			if matrix[i][j] == "#" {
-				continue
-			}
-			var count int
-			for _, a := range action {
-				x, y := i + a[0], j + a[1]
-				if x < 0 || len(matrix) <= x {
-					continue
-				}
-				if y < 0 || len(matrix[i]) <= y {
-					continue
-				}
-				if matrix[x][y] == "#" {
-					count++
-				}
-			}
-			matrix[i][j] = strconv.Itoa(count)
-		}
-	}
-
-	for _, m := range matrix {
-		fmt.Println(strings.Join(m, ""))
+	for i, p := range x {
+		fmt.Println(i, p)
 	}
 }
